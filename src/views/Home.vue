@@ -40,104 +40,103 @@
     />
 
     <!-- 推荐 -->
-    <van-row type="flex" justify="space-around">
+    <div class="recommend-container">
+      <div class="item-list">
+        <div class="item">
+          <!-- title -->
+          <div class="item-title">限时抢购</div>
+          <div class="item-content">
+            <!-- lef -->
+            <div class="item-left">
+              <img
+                src="//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
+                alt
+              />
+              <van-tag mark type="warning" size="small">好货必买</van-tag>
+            </div>
+            <!-- right -->
+            <div class="item-right">
+              <img
+                src="//gw.alicdn.com/tps/i3/2200757237600/O1CN01dyAlSd260qfCm0Ip0_!!2-item_pic.png_170x10000.jpg_.webp"
+                alt
+              />
+              <van-tag mark type="warning" size="small">好货必买</van-tag>
+            </div>
+          </div>
+        </div>
 
-      <van-col class="card-block" :span="12">
-        <van-row class="card-row">
-          <van-col :span="12">限时</van-col>
-          <van-col :span="12">特惠</van-col>
-          <van-col :span="12">
-            <a href="#">
+        <div class="item">
+          <!-- title -->
+          <div class="item-title">限时抢购</div>
+          <div class="item-content">
+            <!-- lef -->
+            <div class="item-left">
               <img
-                src="//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
-                alt="adPic"
+                src="//gw.alicdn.com/tps/bao/upload/TB1ZD26aL5G3KVjSZPxXXbI3XXa.png_170x10000.jpg_.webp"
+                alt
               />
-            </a>
-          </van-col>
-          <van-col :span="12">
-            <a href="#">
+              <van-tag mark type="warning" size="small">好货必买</van-tag>
+            </div>
+            <!-- right -->
+            <div class="item-right">
               <img
-                src="//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
-                alt="adPic"
+                src="//gw.alicdn.com/bao/upload/TB1bh_bj4z1gK0jSZSgXXavwpXa.png_170x10000.jpg_.webp"
+                alt
               />
-            </a>
-          </van-col>
-        </van-row>
-      </van-col>
+              <van-tag mark type="warning" size="small">好货必买</van-tag>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item">
+          <!-- title -->
+          <div class="item-title">限时抢购</div>
+          <div class="item-content">
+            <!-- lef -->
+            <div class="item-left">
+              <img
+                src="//gw.alicdn.com/tps/bao/upload/TB1ZD26aL5G3KVjSZPxXXbI3XXa.png_170x10000.jpg_.webp"
+                alt
+              />
+              <van-tag mark type="warning" size="small">好货必买</van-tag>
+            </div>
+            <!-- right -->
+            <div class="item-right">
+              <img
+                src="//gw.alicdn.com/bao/upload/TB1bh_bj4z1gK0jSZSgXXavwpXa.png_170x10000.jpg_.webp"
+                alt
+              />
+              <van-tag mark type="warning" size="small">好货必买</van-tag>
+            </div>
+          </div>
+        </div>
 
-      <van-col class="card-block" :span="12">
-        <van-row class="card-row">
-          <van-col :span="12">限时</van-col>
-          <van-col :span="12">特惠</van-col>
-          <van-col :span="12">
-            <a href="#">
+        <div class="item">
+          <!-- title -->
+          <div class="item-title">限时抢购</div>
+          <div class="item-content">
+            <!-- lef -->
+            <div class="item-left">
               <img
-                src="//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
-                alt="adPic"
+                src="//gw.alicdn.com/tps/bao/upload/TB1ZD26aL5G3KVjSZPxXXbI3XXa.png_170x10000.jpg_.webp"
+                alt
               />
-            </a>
-          </van-col>
-          <van-col :span="12">
-            <a href="#">
+              <van-tag mark type="warning" size="small">好货必买</van-tag>
+            </div>
+            <!-- right -->
+            <div class="item-right">
               <img
-                src="//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
-                alt="adPic"
+                src="//gw.alicdn.com/bao/upload/TB1bh_bj4z1gK0jSZSgXXavwpXa.png_170x10000.jpg_.webp"
+                alt
               />
-            </a>
-          </van-col>
-        </van-row>
-      </van-col>
-      
-    </van-row>
-    <van-row type="flex" justify="space-around">
+              <van-tag mark type="warning" size="small">好货必买</van-tag>
+            </div>
+          </div>
+        </div>
 
-      <van-col class="card-block" :span="12">
-        <van-row class="card-row">
-          <van-col :span="12">限时</van-col>
-          <van-col :span="12">特惠</van-col>
-          <van-col :span="12">
-            <a href="#">
-              <img
-                src="//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
-                alt="adPic"
-              />
-            </a>
-          </van-col>
-          <van-col :span="12">
-            <a href="#">
-              <img
-                src="//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
-                alt="adPic"
-              />
-            </a>
-          </van-col>
-        </van-row>
-      </van-col>
 
-      <van-col class="card-block" :span="12">
-        <van-row class="card-row">
-          <van-col :span="12">限时</van-col>
-          <van-col :span="12">特惠</van-col>
-          <van-col :span="12">
-            <a href="#">
-              <img
-                src="//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
-                alt="adPic"
-              />
-            </a>
-          </van-col>
-          <van-col :span="12">
-            <a href="#">
-              <img
-                src="//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
-                alt="adPic"
-              />
-            </a>
-          </van-col>
-        </van-row>
-      </van-col>
-      
-    </van-row>
+      </div>
+    </div>
 
     <!-- 猜你喜欢 -->
     <van-divider>猜你喜欢</van-divider>
@@ -221,6 +220,9 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+  .vanrow-container {
+    border-radius: 50%;
+  }
   margin-bottom: 50px;
   .ad {
     width: 100%;
@@ -229,16 +231,45 @@ export default {
   .van-notice-bar {
     height: 30px;
   }
-  .card-block {
-    margin: 5px 10px;
-    background-color: #f7f7f7;
-  }
-  .van-col {
-    overflow: hidden;
-    img {
+  .recommend-container {
+    display: flex;
+    padding: 0.5em;
+    .item {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 45%;
+      justify-content: space-around;
+      background-color: #f7f7f7;
+      margin: 0.5em;
+      padding: 5px;
+      border-radius: 10%;
+      img {
+        width: 50%;
+        height: 50%;
+        margin: 0.5em;
+      }
+      .item-title {
+        text-indent: 1em;
+        text-align: left;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+    }
+    .item-content .item-left {
+      display: inline-block;
       width: 50%;
-      height: 50%;
+      flex-grow: 1;
+    }
+    .item-content .item-right {
+      display: inline-block;
+      width: 50%;
+      flex-grow: 1;
     }
   }
+
+.van-divider {
+  margin: 0;
+}
+
 }
 </style>

@@ -9,13 +9,17 @@ import {
   TabbarItem,
   Divider,
   Col,
-  Row
+  Row,
+  Tag
 } from 'vant';
 
 // 组件注册
 Vue.use(Tabbar)
-  .use(TabbarItem).
-use(Divider).use(Col).use(Row);
+  .use(TabbarItem)
+  .use(Divider)
+  .use(Col)
+  .use(Row)
+  .use(Tag);
 
 Vue.config.productionTip = false
 
