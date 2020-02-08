@@ -1,8 +1,7 @@
 <template>
   <div class="home">
     <!-- topbar -->
-    <TopBar :navbarTitle="navbarTitle"></TopBar>
-
+    <top-bar :navbarTitle="navbarTitle"></top-bar>
     <!-- 搜索框 -->
     <van-search
       v-model="value"
@@ -25,7 +24,9 @@
         :key="index"
         :icon="item.url"
         :text="item.text"
+        :to="item.to"
       />
+
     </van-grid>
 
     <!-- 通知消息 -->
@@ -49,8 +50,8 @@
             <!-- lef -->
             <div class="item-left">
               <img
-                src="//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
-                alt
+                src="../assets/logo.png"
+                @click="tip"
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
             </div>
@@ -136,6 +137,7 @@
 
 
       </div>
+
     </div>
 
     <!-- 猜你喜欢 -->
@@ -143,6 +145,7 @@
 
     <!-- 无限加载 -->
     <infinite-loading></infinite-loading>
+
   </div>
 </template>
 
@@ -158,7 +161,8 @@ import {
   Image,
   NoticeBar,
   Search,
-  Lazyload
+  Lazyload,
+  Toast
 } from "vant";
 
 Vue.use(Swipe)
@@ -187,29 +191,36 @@ export default {
         {
           url:
             "//gw.alicdn.com/tfs/TB1ISdWSFXXXXbFXXXXXXXXXXXX-146-147.png_110x10000.jpg_.webp",
-          text: "美食"
+          text: "美食",
+          to: "/home/foods"
         },
         {
           url:
             "//gw.alicdn.com/tfs/TB1wSoFa5qAXuNjy1XdXXaYcVXa-196-196.png?avatar=1_110x10000.jpg_.webp",
-          text: "电影"
+          text: "电影",
+          to: "/home/movie"
         },
         {
           url:
             "//gw.alicdn.com/tfs/TB15lhOSFXXXXaKXpXXXXXXXXXX-147-147.png_110x10000.jpg_.webp",
-          text: "旅游"
+          text: "旅游",
+          to: "/home/travel"
         },
         {
           url:
             "//gw.alicdn.com/tfs/TB12CFXSFXXXXcpapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp",
-          text: "休闲"
+          text: "休闲",
+          to: "/home/leisure"
         }
       ]
     };
   },
   methods: {
     onSearch: function() {},
-    onCancel: function() {}
+    onCancel: function() {},
+    tip: function () {
+      Toast("test ifo");
+    }
   },
   components: {
     TopBar,
