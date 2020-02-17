@@ -1,6 +1,6 @@
 <template>
     <div class="">
-          <van-stepper v-model="value" />
+          <van-stepper @plus="onPlus" @minus="onMinus" v-model="value"/>
     </div>
 </template>
 
@@ -13,11 +13,21 @@ Vue.use(Stepper);
 export default {
     data() {
         return {
-            value: ''
+            value: 1,
+
         }
     },
     components: {},
-    methods: {}
+    methods: {
+        onPlus(value) {
+            // alert(value);
+            this.$emit('onPlus', value);
+        },
+        onMinus(value) {
+            this.$emit('onMinus', value);
+
+        }
+    }
 }
 </script>
 

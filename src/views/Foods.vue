@@ -2,7 +2,7 @@
   <div id="foods">
     <top-bar :navbarTitle="navbarTitle" :isShow="isShow"></top-bar>
     <!-- 单件商品的详情跳转页面未写 -->
-    <a href="#" v-for="(item, index) in goods" :key="index" class="goods-item">
+    <a href="javascript:void(0);" v-for="(item, index) in goods" :key="index" class="goods-item">
       <van-card :price="item.price" :desc="item.desc" :title="item.title" :thumb="item.thumb">
         <div slot="tags">
           <van-tag plain type="danger">热门</van-tag>
@@ -13,7 +13,7 @@
           <div class="van-card__num">{{item.num}}</div>
         </div>
         <div slot="footer">
-          <van-button size="mini">购买</van-button>
+          <van-button size="mini" @click="purchase">购买</van-button>
           <van-button size="mini" @click="addToCart(item)">加入购物车</van-button>
         </div>
       </van-card>
@@ -39,42 +39,48 @@ export default {
           num: "99",
           price: "6.00",
           desc: "[Y-78]WOW双堡套餐兑换券1份",
-          title: "肯德基"
+          title: "肯德基",
+          purchasecount: 1
         },
         {
           thumb: require("../assets/foods/food02.jpeg"),
           num: "10",
           price: "90.0",
           desc: "[江华]李氏煲仔饭5选1",
-          title: "李氏农家"
+          title: "李氏农家",
+          purchasecount: 1
         },
         {
           thumb: require("../assets/foods/food03.png"),
           num: "300",
           price: "34.50",
           desc: "[江华]杭州小笼包，建议单人使用",
-          title: "五谷粗粮包"
+          title: "五谷粗粮包",
+          purchasecount: 1
         },
         {
           thumb: require("../assets/foods/food04.jpeg"),
           num: "345",
           price: "783.0",
           desc: "[万达广场]日式料理自助餐",
-          title: "友垣日本料理·自助餐"
+          title: "友垣日本料理·自助餐",
+          purchasecount: 1
         },
         {
           thumb: require("../assets/foods/food04.jpeg"),
           num: "98",
           price: "783.0",
           desc: "[万达广场]日式料理自助餐",
-          title: "友垣日本料理·自助餐"
+          title: "友垣日本料理·自助餐",
+          purchasecount: 1
         },
         {
           thumb: require("../assets/foods/food04.jpeg"),
           num: "546",
           price: "783.0",
           desc: "[万达广场]日式料理自助餐",
-          title: "友垣日本料理·自助餐"
+          title: "友垣日本料理·自助餐",
+          purchasecount: 1
         }
       ]
     };
@@ -83,43 +89,13 @@ export default {
   methods: {
     addToCart: function(item) {
       // item存放当前商品信息
-      // var storage = window.localStorage;
-      // var totalGoods = [];
-     
-      //   var oldGoods = JSON.parse(storage.goods);
+      // let good = JSON.stringify(item);
 
-      //   // console.log("oldgoods:" + storage.goods);
-  
-      //   storage.removeItem("goods");
-      //   totalGoods.push(oldGoods);
-      //   totalGoods.push(item);
-
-      //   // totalGoods = oldGoods.concat(item);
-      //   storage.setItem("goods", JSON.stringify(totalGoods));
-
-        //
-      var good , data= [];
-      this.goods.forEach(element => {
-
-        let thumb = element.thumb;
-        let num = element.num;
-        let price = element.price;
-        let desc = element.desc;
-        let title = element.title;
-
-        good.thumb = thumb;
-        good.num = num;
-        good.price = price;
-        good.desc = desc;
-        good.title = title;
-
-        data.push(good);
-        storage.goods = JSON.stringify(data);
-        // console.log(typeof(data))
-
-      });
-
-      console.log(item);
+      // this.$store.cartList.push(good);
+      console.log('food.vue: ' + item.title);
+      this.$store.commit("addGoods", item);
+    },
+    purchase() {
     }
   }
 };
