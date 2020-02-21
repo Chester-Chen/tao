@@ -64,7 +64,7 @@ export default {
         $state.loaded();
       }, 1000);
 
-      console.log(this.lists);
+      // console.log(this.lists);
     }
   },
   components: {

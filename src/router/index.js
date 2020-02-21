@@ -23,9 +23,9 @@ const routes = [
   { path: '/home/movie', component: Movie },
   { path: '/home/travel', component: Travel },
   { path: '/home/leisure', component: Leisure },
-  { path: '/orders', name: 'orders', component: Orders },
-  { path: '/cart', name: 'cart', component: Cart},
-  // { path: '/cart', name: 'cart', component: Cart, meta: { KeepAlive: true }},
+  { path: '/orders', name: 'orders', component: Foods },
+  // { path: '/cart', name: 'cart', component: Cart},
+  { path: '/cart', name: 'cart', component: Cart, meta: { KeepAlive: true }},
   { path: '/mine', name: 'mine', component: Mine }
 ]
 

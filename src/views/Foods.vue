@@ -3,18 +3,18 @@
     <top-bar :navbarTitle="navbarTitle" :isShow="isShow"></top-bar>
     <!-- 单件商品的详情跳转页面未写 -->
     <a href="javascript:void(0);" v-for="(item, index) in goods" :key="index" class="goods-item">
-      <van-card :price="item.price" :desc="item.desc" :title="item.title" :thumb="item.thumb">
+      <van-card :price="item.price" :desc="item.desc" :title="item.name" :thumb="item.thumb">
         <div slot="tags">
           <van-tag plain type="danger">热门</van-tag>
           <van-tag plain type="danger">劲爆</van-tag>
         </div>
         <!-- 自建插槽，处理原生属性的'x'符号 -->
         <div slot="bottom">
-          <div class="van-card__num">{{item.num}}</div>
+          <div class="van-card__num">{{item.sold}}</div>
         </div>
         <div slot="footer">
-          <van-button size="mini" @click="purchase">购买</van-button>
-          <van-button size="mini" @click="addToCart(item)">加入购物车</van-button>
+          <van-button size="mini">购买</van-button>
+          <van-button size="mini" @click="addGoods(item)">加入购物车</van-button>
         </div>
       </van-card>
     </a>
@@ -24,6 +24,7 @@
 <script type="text/javascript">
 import Vue from "vue";
 import { Card } from "vant";
+import { mapMutations } from "vuex";
 import TopBar from "../components/TopBar";
 
 Vue.use(Card);
@@ -35,68 +36,34 @@ export default {
       isShow: true,
       goods: [
         {
+          id: 1001,
           thumb: require("../assets/foods/food01.jpeg"),
-          num: "99",
-          price: "6.00",
+          num: 1,
+          price: 6,
           desc: "[Y-78]WOW双堡套餐兑换券1份",
-          title: "肯德基",
-          purchasecount: 1
+          name: "肯德基",
+          purchasecount: 1,
+          selected: true,
+          sold: 80
         },
         {
+          id: 1002,
           thumb: require("../assets/foods/food02.jpeg"),
-          num: "10",
-          price: "90.0",
+          num: 1,
+          price: 90,
           desc: "[江华]李氏煲仔饭5选1",
-          title: "李氏农家",
-          purchasecount: 1
-        },
-        {
-          thumb: require("../assets/foods/food03.png"),
-          num: "300",
-          price: "34.50",
-          desc: "[江华]杭州小笼包，建议单人使用",
-          title: "五谷粗粮包",
-          purchasecount: 1
-        },
-        {
-          thumb: require("../assets/foods/food04.jpeg"),
-          num: "345",
-          price: "783.0",
-          desc: "[万达广场]日式料理自助餐",
-          title: "友垣日本料理·自助餐",
-          purchasecount: 1
-        },
-        {
-          thumb: require("../assets/foods/food04.jpeg"),
-          num: "98",
-          price: "783.0",
-          desc: "[万达广场]日式料理自助餐",
-          title: "友垣日本料理·自助餐",
-          purchasecount: 1
-        },
-        {
-          thumb: require("../assets/foods/food04.jpeg"),
-          num: "546",
-          price: "783.0",
-          desc: "[万达广场]日式料理自助餐",
-          title: "友垣日本料理·自助餐",
-          purchasecount: 1
+          name: "李氏农家",
+          purchasecount: 1,
+          selected: true,
+          sold: 67
         }
+    
       ]
     };
   },
   components: { TopBar },
   methods: {
-    addToCart: function(item) {
-      // item存放当前商品信息
-      // let good = JSON.stringify(item);
-
-      // this.$store.cartList.push(good);
-      console.log('food.vue: ' + item.title);
-      this.$store.commit("addGoods", item);
-    },
-    purchase() {
-    }
+    ...mapMutations(['addGoods']),
   }
 };
 </script>

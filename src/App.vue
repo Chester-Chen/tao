@@ -6,14 +6,12 @@
       <van-tabbar-item icon="cart-o" info="99+" to="/cart">购物车</van-tabbar-item>
       <van-tabbar-item icon="manager-o" to="/mine">我的淘</van-tabbar-item>
     </van-tabbar>
-    <keep-alive include="cart">
       <router-view />
-    </keep-alive>
     <!-- <keep-alive>
       <router-view v-if="$route.meta.KeepAlive" />
-    </keep-alive> -->
+    </keep-alive>
 
-    <!-- <router-view v-if="!$route.meta.KeepAlive" /> -->
+    <router-view v-if="!$route.meta.KeepAlive" /> -->
   </div>
 </template>
 
