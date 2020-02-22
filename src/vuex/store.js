@@ -4,11 +4,12 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 
-const store =  new Vuex.Store({
+const store = new Vuex.Store({
     state: {
-        cartList: [],
+        // cartList: [],
         newtestotalPrice: 0,
         goodsList: JSON.parse(localStorage.getItem('cartList') || '[]'),
+        allChecked: undefined
     },
     getters: {
         getGoodLists(state) {
@@ -16,13 +17,44 @@ const store =  new Vuex.Store({
         },
         totalPrice(state) {
             let price = 0;
-            state.goodsList.forEach( value => {
-                price += value.num * value.price;
+            //  也可用es6的every
+            state.goodsList.forEach(value => {
+                if (value.selected == true) {
+                    price += value.num * value.price;
+                }
             });
             console.log('总价：' + price);
+            // 因为vant的submitbar，小数点会前进两位，所以*100
             return price * 100;
-        }
+        },
+        /**商品选中状态
+         * allSelected          全部商品为选中状态返回true      否则返回相反值
+         * allNotSelected       全部商品不为选中状态返回false   否则返回相反值
+         * someSelected         部分商品为选中状态返回true      否则返回相反值
+         * 
+         */
+        goodsIsAllSelected(state) {
+            let obj = new Object();
+ 
+            // 全选
+            let allSelected = state.goodsList.every(item => {
+                return (item.selected == true);
+            });
+            // 全不选
+            let allNotSelected = state.goodsList.every(item => {
+                return (item.selected == false);
+            })
+            // 部分选中
+            let someSelected = (allSelected == false && allNotSelected == false)? true :false;
 
+            obj.allSelected = allSelected;
+            obj.someSelected = someSelected;
+            obj.allNotSelected = allNotSelected;
+            console.log(obj);
+
+            state.allChecked = allSelected;
+            return obj;
+        }
     },
     mutations: {
         addGoods(state, goods) {
@@ -34,7 +66,7 @@ const store =  new Vuex.Store({
             } else { // 没找到，直接新增
                 state.goodsList.push(goods)
             }
-            
+
             console.log(state.goodsList);
         },
 
@@ -64,24 +96,24 @@ const store =  new Vuex.Store({
         // },
 
         // 购物车商品数量增加
-        addPurchaseCount(state, item) {
-            state.cartList.forEach(function (value, index) {
-                if (value.title == item.title) {
-                    state.cartList[index].purchasecount++;
-                }
-            })
+        // addPurchaseCount(state, item) {
+        //     state.cartList.forEach(function (value, index) {
+        //         if (value.title == item.title) {
+        //             state.cartList[index].purchasecount++;
+        //         }
+        //     })
 
-        },
+        // },
 
-        // 购物车商品数量减少
-        minusPurchaseCount(state, item) {
-            state.cartList.forEach(function (value, index) {
-                if (value.title == item.title) {
-                    state.cartList[index].purchasecount -= 1;
-                }
-            })
+        // // 购物车商品数量减少
+        // minusPurchaseCount(state, item) {
+        //     state.cartList.forEach(function (value, index) {
+        //         if (value.title == item.title) {
+        //             state.cartList[index].purchasecount -= 1;
+        //         }
+        //     })
 
-        }
+        // }
 
 
 
