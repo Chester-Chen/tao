@@ -34,82 +34,19 @@ export default {
     return {
       navbarTitle: "美食",
       isShow: true,
-      goods: [
-        {
-          id: 1001,
-          thumb: require("../assets/foods/food01.jpeg"),
-          num: 1,
-          price: 6,
-          desc: "[Y-78]WOW双堡套餐兑换券1份",
-          name: "肯德基",
-          selected: true,
-          sold: 80
-        },
-        {
-          id: 1002,
-          thumb: require("../assets/foods/food02.jpeg"),
-          num: 1,
-          price: 90,
-          desc: "[江华]李氏煲仔饭5选1",
-          name: "李氏农家",
-          selected: true,
-          sold: 797
-        },
-        {
-          id: 1003,
-          thumb: require("../assets/foods/food03.jpeg"),
-          num: 1,
-          price: 34,
-          desc: "[7店通用]【可自提】板烧鸡腿堡麦辣鸡翅薯条组合，建议1-2人使用",
-          name: "麦当劳",
-          selected: true,
-          sold: 1467
-        },
-        {
-          id: 1004,
-          thumb: require("../assets/foods/food04.jpeg"),
-          num: 1,
-          price: 10,
-          desc: "[白石]店家推荐，建议2人使用",
-          name: "不二老坛子酸菜鱼",
-          selected: true,
-          sold: 34567
-        },
-        {
-          id: 1005,
-          thumb: require("../assets/foods/food05.jpeg"),
-          num: 1,
-          price: 80,
-          desc: "[仁寿广场]招牌螺蛳粉1份，提供免费WiFi",
-          name: "柳柳香柳州螺蛳粉",
-          selected: true,
-          sold: 2345
-        },
-        {
-          id: 1006,
-          thumb: require("../assets/foods/food06.jpg"),
-          num: 1,
-          price: 389,
-          desc: "[蓬江]100元代金券1张，可叠加",
-          name: "法兰度航空主题餐厅",
-          selected: true,
-          sold: 467
-        },
-        {
-          id: 1007,
-          thumb: require("../assets/foods/food07.jpeg"),
-          num: 1,
-          price: 450,
-          desc: "[仁寿广场]奶茶烧仙草1份，提供免费WiFi",
-          name: "林小雪甜品",
-          selected: true,
-          sold: 405
-        }
-    
-      ]
+      goods: []
     };
   },
   components: { TopBar },
+  created() {
+
+    this.$axios.get('/showgoods').then((response) => {
+      // console.log(typeof(response));
+      // console.log(response.data);
+      this.goods = response.data;
+      console.log(this.goods[0].thumb)
+    })
+  },
   methods: {
     ...mapMutations(['addGoods']),
   }

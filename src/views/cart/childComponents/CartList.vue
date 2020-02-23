@@ -3,7 +3,7 @@
     <!-- <van-button type="mini" color="lightpink" v-model="getGoodLists">刷新购物车</van-button> -->
     <!-- 购物车列表 -->
     <div v-for="(item, index) in cartList" :key="index" class="goods-item">
-      <van-checkbox v-model="item.selected" @click="selectedHandler(item.selected)"></van-checkbox>
+      <van-checkbox v-model="item.selected" @click="selectedHandler(item, item.selected)"></van-checkbox>
       <van-card :price="item.price" :desc="item.desc" :title="item.name" :thumb="item.thumb">
         <div slot="tags">
           <van-tag plain type="danger">热门</van-tag>
@@ -62,8 +62,9 @@ export default {
       console.log("delete index: " + index);
       this.cartList.splice(index, 1);
     },
-    selectedHandler(selectedStatus) {
+    selectedHandler(item, selectedStatus) {
       console.log('cartlist:'+ !selectedStatus);
+      item.selected = !item.selected;
       this.$emit('isCancelAllSelected', (!selectedStatus) );  // 取反，传出取消后的状态
     }
 

@@ -50,8 +50,9 @@ const store = new Vuex.Store({
             obj.allSelected = allSelected;
             obj.someSelected = someSelected;
             obj.allNotSelected = allNotSelected;
-            console.log(obj);
 
+            console.log(`store 商品选中状态: ${JSON.stringify(obj)}`);
+            
             state.allChecked = allSelected;
             return obj;
         }

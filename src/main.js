@@ -1,7 +1,15 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
 import store from './vuex/store';
+import axios from 'axios';
+
+// 配置全局URL
+// axios.defaults.baseURL = "https://crazybro.top:9980";
+axios.defaults.baseURL = "http://localhost:3000";
+// 写入原型
+Vue.prototype.$axios = axios;
+
 
 // vuex
 import Vuex from 'vuex'
