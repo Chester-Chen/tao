@@ -1,17 +1,10 @@
 <template>
   <div id="app">
-    <van-tabbar v-model="active" router>
-      <van-tabbar-item icon="wap-home-o" to="/home">首页</van-tabbar-item>
-      <van-tabbar-item icon="orders-o" to="/orders">订单</van-tabbar-item>
-      <van-tabbar-item icon="cart-o" info="99+" to="/cart">购物车</van-tabbar-item>
-      <van-tabbar-item icon="manager-o" to="/mine">我的淘</van-tabbar-item>
-    </van-tabbar>
-      <router-view />
+    <router-view />
     <!-- <keep-alive>
       <router-view v-if="$route.meta.KeepAlive" />
     </keep-alive>
-
-    <router-view v-if="!$route.meta.KeepAlive" /> -->
+    <router-view v-if="!$route.meta.KeepAlive" />-->
   </div>
 </template>
 
@@ -19,10 +12,13 @@
 export default {
   data() {
     return {
-      active: 0
+      
     };
   },
-  methods: {}
+  methods: {},
+  components: {
+    
+  }
 };
 </script>
 
@@ -34,7 +30,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   padding-top: 46px;
-  padding-bottom: 50px;
+  // padding-bottom: 50px;
   .van-info {
     right: -5px;
   }

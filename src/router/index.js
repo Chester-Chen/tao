@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Orders from '../views/Orders';
-import Cart from '../views/cart/Cart';
-import Mine from '../views/Mine';
-import Foods from '../views/Foods';
-import Movie from '../views/Movie';
-import Travel from '../views/Travel';
-import Leisure from '../views/Leisure';
+import Home from '@/views/home/Home'
+import Orders from '@/views/orders/Orders';
+import Cart from '@/views/cart/Cart';
+import Mine from '@/views/mine/Mine';
+
+// homeSubViews 
+import Foods from '@/views/home/subViews/Foods';
+import Movie from '@/views/home/subViews/Movie';
+import Travel from '@/views/home/subViews/Travel';
+import Leisure from '@/views/home/subViews/Leisure';
+import GoodsDetail from '@/views/goodsDetail/GoodsDetail';
 
 
 // 测试组件
@@ -23,10 +26,11 @@ const routes = [
   { path: '/home/movie', component: Movie },
   { path: '/home/travel', component: Travel },
   { path: '/home/leisure', component: Leisure },
-  { path: '/orders', name: 'orders', component: Foods },
+  { path: '/orders', name: 'orders', component: Orders },
   // { path: '/cart', name: 'cart', component: Cart},
-  { path: '/cart', name: 'cart', component: Cart, meta: { KeepAlive: true }},
-  { path: '/mine', name: 'mine', component: Mine }
+  { path: '/cart', component: Cart, meta: { KeepAlive: true }},
+  { path: '/mine',  component: Mine },
+  { path: '/goodsdetail', component: GoodsDetail },
 ]
 
 const router = new VueRouter({

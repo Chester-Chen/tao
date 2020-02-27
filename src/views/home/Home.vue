@@ -50,7 +50,7 @@
             <!-- lef -->
             <div class="item-left">
               <img
-                src="../assets/logo.png"
+                src="@/assets/logo.png"
                 @click="tip"
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
@@ -146,13 +146,17 @@
     <!-- 无限加载 -->
     <infinite-loading></infinite-loading>
 
+    <!-- 底部导航 -->
+    <footer-tar-bar :active="active"></footer-tar-bar>
+
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import InfiniteLoading from "../components/InfiniteLoading";
-import TopBar from "../components/TopBar";
+import FooterTarBar from "@/components/FooterTarBar";
+import InfiniteLoading from "@/components/InfiniteLoading";
+import TopBar from "@/components/TopBar";
 import {
   Swipe,
   SwipeItem,
@@ -182,6 +186,7 @@ export default {
       noticeText: "买口罩啦！100元70只，火爆促销！机不可失失不再来！！！！！",
       value: "",
       navbarTitle: "淘兴趣",
+      active: 0,
       images: [
         "//gw.alicdn.com/imgextra/i3/939554/O1CN01Hohccc2KRmavUmXmd_!!939554-0-lubanu.jpg_790x10000Q75.jpg_.webp",
         "//gw.alicdn.com/imgextra/i3/939554/O1CN01Hohccc2KRmavUmXmd_!!939554-0-lubanu.jpg_790x10000Q75.jpg_.webp",
@@ -224,7 +229,8 @@ export default {
   },
   components: {
     TopBar,
-    InfiniteLoading
+    InfiniteLoading,
+    FooterTarBar
   }
 };
 </script>

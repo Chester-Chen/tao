@@ -1,16 +1,17 @@
 <template>
-  <div class>
-    <top-bar :navbarTitle="navbarTitle"></top-bar>
+  <div>
+    <top-bar :navbarTitle="navbarTitle" :isShow="isShow"></top-bar>
   </div>
 </template>
 
 <script type="text/javascript">
-import TopBar from "../components/TopBar";
+import TopBar from "@/components/TopBar";
 
 export default {
   data() {
     return {
-      navbarTitle: "我的Tao"
+      navbarTitle: "休闲",
+      isShow: true
     };
   },
   components: { TopBar },

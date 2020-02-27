@@ -5,7 +5,7 @@
 </template>
 
 <script type="text/javascript">
-import TopBar from "../components/TopBar";
+import TopBar from "@/components/TopBar";
 
 export default {
   data() {
