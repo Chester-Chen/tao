@@ -34,7 +34,7 @@
     <div class="divider" style="height: 5px;background: #f5f5f5;"></div>
 
     <!-- 优惠选择 -->
-    <div class="size-selected">
+    <div class="size-selected" @click="skuShow = !skuShow">
       <div class="item">
         <div class="left">优惠</div>
         <div class="center">满900减10元券</div>
@@ -42,7 +42,7 @@
       </div>
     </div>
     <!-- 规格选择 -->
-    <div class="size-selected">
+    <div class="size-selected" @click="skuShow = !skuShow">
       <div class="item">
         <div class="left">规格</div>
         <div class="center">请选择颜色分类</div>
@@ -51,7 +51,7 @@
     </div>
 
     <!-- 参数选择 -->
-    <div class="size-selected">
+    <div class="size-selected" @click="skuShow = !skuShow">
       <div class="item">
         <div class="left">参数</div>
         <div class="center">品牌材质...</div>
@@ -76,7 +76,10 @@
     <div class="comment">
       <div class="avator">
         <van-image round width="1.2rem" height="1.2rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-        <div class="name">疯狂的小弟弟</div>
+        <div class="wrapper">
+          <div class="name">疯狂的小弟弟</div>
+          <van-rate size="18" v-model="rateValue" />
+        </div>
       </div>
       <div class="content">很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致</div>
       <div class="icon">
@@ -89,6 +92,17 @@
       </div>
     </div>
 
+    <!-- sku -->
+    <van-sku
+      v-model="skuShow"
+      :sku="sku"
+      :goods="skuGoods"
+      :goods-id="goodsId"
+      :quota="quota"
+      :quota-used="quotaUsed"
+      :hide-stock="sku.hide_stock"
+      :message-config="messageConfig"
+    />
     <!-- 底部导航 -->
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" @click="onClickIcon" />
@@ -101,18 +115,29 @@
 
 <script type="text/javascript">
 import Vue from "vue";
-import { Swipe, SwipeItem } from "vant";
 import TopBar from "@/components/TopBar";
-import { GoodsAction, GoodsActionIcon, GoodsActionButton } from "vant";
+import {
+  GoodsAction,
+  GoodsActionIcon,
+  GoodsActionButton,
+  Swipe,
+  SwipeItem,
+  Rate,
+  Sku
+} from "vant";
 
-Vue.use(GoodsAction);
-Vue.use(GoodsActionButton);
-Vue.use(GoodsActionIcon);
+Vue.use(GoodsAction)
+  .use(GoodsActionButton)
+  .use(GoodsActionIcon)
+  .use(Rate)
+  .use(Sku);
+
 export default {
   data() {
     return {
       navbarTitle: "商品详情",
       isShow: true,
+      rateValue: 3,
       goodsDetail: {
         // 根据传入的商品id进行接口数据对比，筛选相应数据渲染
         id: 1001,
@@ -130,6 +155,72 @@ export default {
           address: "北京",
           freeDeliver: true
         }
+      },
+      // sku
+      skuShow: false,
+      quota: 9,
+      quotaUsed: 5,
+      goodsId: 56789,
+      sku: {
+        // 数据结构见文档
+      },
+      messageConfig: {
+        // 数据结构见文档
+      },
+      sku: {
+        // 所有sku规格类目与其值的从属关系，比如商品有颜色和尺码两大类规格，颜色下面又有红色和蓝色两个规格值。
+        // 可以理解为一个商品可以有多个规格类目，一个规格类目下可以有多个规格值。
+        tree: [
+          {
+            k: "颜色", // skuKeyName：规格类目名称
+            v: [
+              {
+                id: "30349", // skuValueId：规格值 id
+                name: "红色", // skuValueName：规格值名称
+                imgUrl: "https://img.yzcdn.cn/1.jpg", // 规格类目图片，只有第一个规格类目可以定义图片
+                previewImgUrl: "https://img.yzcdn.cn/1p.jpg" // 用于预览显示的规格类目图片
+              },
+              {
+                id: "1215",
+                name: "蓝色",
+                imgUrl: "https://img.yzcdn.cn/2.jpg",
+                previewImgUrl: "https://img.yzcdn.cn/2p.jpg"
+              }
+            ],
+            k_s: "s1" // skuKeyStr：sku 组合列表（下方 list）中当前类目对应的 key 值，value 值会是从属于当前类目的一个规格值 id
+          }
+        ],
+        // 所有 sku 的组合列表，比如红色、M 码为一个 sku 组合，红色、S 码为另一个组合
+        list: [
+          {
+            id: 2259, // skuId，下单时后端需要
+            price: 100, // 价格（单位分）
+            s1: "1215", // 规格类目 k_s 为 s1 的对应规格值 id
+            s2: "1193", // 规格类目 k_s 为 s2 的对应规格值 id
+            s3: "0", // 最多包含3个规格值，为0表示不存在该规格
+            stock_num: 110 // 当前 sku 组合对应的库存
+          }
+        ],
+        price: "1.00", // 默认价格（单位元）
+        stock_num: 227, // 商品总库存
+        collection_id: 2261, // 无规格商品 skuId 取 collection_id，否则取所选 sku 组合对应的 id
+        none_sku: false, // 是否无规格商品
+        messages: [
+          {
+            // 商品留言
+            datetime: "0", // 留言类型为 time 时，是否含日期。'1' 表示包含
+            multiple: "0", // 留言类型为 text 时，是否多行文本。'1' 表示多行
+            name: "留言", // 留言名称
+            type: "text", // 留言类型，可选: id_no（身份证）, text, tel, date, time, email
+            required: "1", // 是否必填 '1' 表示必填
+            placeholder: "" // 可选值，占位文本
+          }
+        ],
+        hide_stock: false // 是否隐藏剩余库存
+      },
+      skuGoods: {
+        // 默认商品 sku 缩略图
+        picture: "https://img.yzcdn.cn/1.jpg"
       }
     };
   },
@@ -251,13 +342,19 @@ export default {
   .comment {
     margin-bottom: 15px;
     .avator {
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        .name {
+          font-size: 0.3rem;
+          color: #999999;
+          text-align: left;
+          padding-left: 3px;
+        }
+      }
       margin-bottom: 4px;
       .van-image {
         margin-right: 10px;
-      }
-      .name {
-        font-size: 0.3rem;
-        color: #999999;
       }
     }
     .content {
@@ -265,7 +362,6 @@ export default {
       text-align: left;
     }
     .icon {
-   
       .van-icon {
         font-size: 1.2rem;
         margin-right: 15px;

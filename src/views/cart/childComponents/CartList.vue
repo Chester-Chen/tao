@@ -38,7 +38,7 @@ Vue.use(Card).use(Stepper);
 export default {
   data() {
     return {
-      cartList: [], // 用getGoodLists代替，暂时空置
+      cartList: [],
       value: true
     };
   },
@@ -85,7 +85,7 @@ export default {
 <style lang="scss" scoped>
 .cart-list {
   // display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   // justify-content: center;
   .goods-item {
     display: flex;

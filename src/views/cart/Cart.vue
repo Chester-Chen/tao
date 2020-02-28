@@ -7,7 +7,12 @@
     <cart-list @isCancelAllSelected="isCancelAllSelected"></cart-list>
 
     <!-- 结算 -->
-    <van-submit-bar :price="totalPrice" button-text="提交订单" :decimal-length="2" @submit="onSubmit">
+    <van-submit-bar
+      :price="totalPrice"
+      button-text="提交订单"
+      :decimal-length="2"
+      @submit="commitOrders(orderLists)"
+    >
       <van-checkbox v-model="check" @click="selectAll">全选</van-checkbox>
     </van-submit-bar>
 
@@ -22,7 +27,7 @@ import TopBar from "@/components/TopBar";
 import FooterTarBar from "@/components/FooterTarBar";
 import CartList from "../cart/childComponents/CartList";
 import { SubmitBar, Toast } from "vant";
-import { mapGetters, mapState } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 Vue.use(SubmitBar);
 
@@ -38,7 +43,8 @@ export default {
   components: { TopBar, CartList, FooterTarBar },
   created() {},
   methods: {
-    onSubmit(params) {},
+    ...mapMutations(['commitOrders']),
+  
     // 选中全部及取消全部
     selectAll() {
       this.goodLists = this.getGoodLists;
@@ -104,7 +110,14 @@ export default {
   },
   watch: {},
   computed: {
-    ...mapGetters(["totalPrice", "goodsIsAllSelected", "getGoodLists"])
+    ...mapGetters(["totalPrice", "goodsIsAllSelected", "getGoodLists"]),
+    orderLists() {
+      let orders = this.getGoodLists.filter(item => {
+        return item.selected == true;
+      });
+      console.log('提交的orders: '+ JSON.stringify(orders));
+      return orders;
+    }
   }
 };
 </script>

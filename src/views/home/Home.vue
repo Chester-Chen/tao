@@ -50,7 +50,7 @@
             <!-- lef -->
             <div class="item-left">
               <img
-                src="@/assets/logo.png"
+                src="//gw.alicdn.com/tps/i3/2200757237600/O1CN01dyAlSd260qfCm0Ip0_!!2-item_pic.png_170x10000.jpg_.webp"
                 @click="tip"
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
