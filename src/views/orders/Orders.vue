@@ -1,9 +1,11 @@
 <template>
   <div class="orders">
     <top-bar :navbarTitle="navbarTitle"></top-bar>
+    <!-- 清空本地订单 -->
+    <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" @click="deleteAllOrders">清除所有订单</van-button>
     <div
       href="javascript:void(0);"
-      v-for="(item, index) in getOrderLists"
+      v-for="(item, index) in orderLists"
       :key="index"
       class="goods-item"
     >
@@ -16,9 +18,10 @@
           </div>
         </van-card>
       </router-link>
+
       <div class="cart-footer">
         <van-button size="small">延迟收货</van-button>
-        <van-button size="small">物流信息</van-button>
+        <van-button size="small" @click="getTransferId(item)" :to="{path: '/transfer', query: {transferId: item.id}}">物流信息</van-button>
         <van-button size="small" class="accepted">确认收货</van-button>
       </div>
     </div>
@@ -42,7 +45,8 @@ export default {
     return {
       navbarTitle: "订单",
       active: 1,
-      orderLists: []
+      orderLists: [],
+      transferId: null
     };
   },
   components: {
@@ -53,7 +57,17 @@ export default {
     this.orderLists = this.getOrderLists;
     console.log(this.orderLists);
   },
-  methods: {},
+  methods: {
+    getTransferId(order) {
+      // 获取商品id
+      this.transferId = order.id;
+      console.log("物流商品的id: " + this.transferId);
+    },
+    deleteAllOrders() {
+      this.orderLists = [];
+      this.$store.commit('clearAllOrders');
+    }
+  },
   computed: {
     ...mapGetters(["getOrderLists"])
   }

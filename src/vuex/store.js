@@ -10,7 +10,8 @@ const store = new Vuex.Store({
         newtestotalPrice: 0,
         goodsList: JSON.parse(localStorage.getItem('cartList') || '[]'),
         allChecked: undefined,
-        orderLists: []
+        orderLists: JSON.parse(localStorage.getItem('orderLists') || '[]')
+        // orderLists: []
     },
     getters: {
         getOrderLists(state) {
@@ -62,6 +63,10 @@ const store = new Vuex.Store({
         }
     },
     mutations: {
+        // 清除所有订单
+        clearAllOrders (state) {
+            state.orderLists = [];
+        },
         addGoods(state, goods) {
             // oldGoods，就是第一次添加进去的那个对象
             const oldGoods = state.goodsList.find(item => item.id === goods.id)
@@ -75,15 +80,35 @@ const store = new Vuex.Store({
             console.log(state.goodsList);
         },
 
-        /**提交订单
-         * 
-         * 还没有进行提交订单查重，
+        /**
+         * 提交订单
+         * 相同商品提交未能合并（未解决）
          */
         commitOrders(state, orders) {
-            let temp = state.orderLists;
+            let orderLists = [];
+            let repeatIndex = undefined;
 
-            state.orderLists = temp.concat(orders);
-            // console.log(state.orderLists);
+            if (state.orderLists.length === 0) { // 如果订单是空的，直接将新订单推入
+                orderLists = orders;
+            } else { // 如果订单不为空
+                orderLists = state.orderLists; // 拿到原先的订单
+                // 循环比对重复订单
+                orders.filter((orderItem, orderIndex) => {
+
+                    repeatIndex = orderLists.indexOf(orderItem); // 拿到旧订单重复的索引
+                    if (repeatIndex != -1) {
+                        orderLists[repeatIndex].num += orders[orderIndex].num;
+                    } else {
+                        orderLists.push(orderItem);
+                    }
+                   
+                })
+
+            }
+
+            console.log(orderLists)
+            state.orderLists = orderLists;
+
         }
 
         // 添加商品到购物车
@@ -137,6 +162,7 @@ const store = new Vuex.Store({
 window.onbeforeunload = function () {
     // 刷新页面或关闭页面时，存到本地
     window.localStorage.setItem('cartList', JSON.stringify(store.getters.getGoodLists));
+    window.localStorage.setItem('orderLists', JSON.stringify(store.getters.getOrderLists));
 }
 
 export default store;

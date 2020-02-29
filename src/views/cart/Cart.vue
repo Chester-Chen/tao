@@ -37,7 +37,8 @@ export default {
       navbarTitle: "购物车",
       check: this.$store.state.allChecked,
       goodLists: [],
-      active: 2
+      active: 2,
+      allOrderLists: []
     };
   },
   components: { TopBar, CartList, FooterTarBar },
@@ -109,10 +110,13 @@ export default {
     }
   },
   watch: {},
+  created() {
+    this.allOrderLists = this.getGoodLists;
+  },
   computed: {
     ...mapGetters(["totalPrice", "goodsIsAllSelected", "getGoodLists"]),
     orderLists() {
-      let orders = this.getGoodLists.filter(item => {
+      let orders = this.allOrderLists.filter(item => {
         return item.selected == true;
       });
       console.log('提交的orders: '+ JSON.stringify(orders));

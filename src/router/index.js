@@ -12,6 +12,8 @@ import Travel from '@/views/home/subViews/Travel';
 import Leisure from '@/views/home/subViews/Leisure';
 import GoodsDetail from '@/views/goodsDetail/GoodsDetail';
 
+// order
+import Transfer from '@/views/orders/subComponent/Transfer';
 
 // 测试组件
 import test from '../test/test';
@@ -31,6 +33,7 @@ const routes = [
   { path: '/cart', component: Cart, meta: { KeepAlive: true }},
   { path: '/mine',  component: Mine },
   { path: '/goodsdetail', component: GoodsDetail },
+  { path: '/transfer/', component: Transfer },
 ]
 
 const router = new VueRouter({
