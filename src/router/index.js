@@ -15,8 +15,10 @@ import GoodsDetail from '@/views/goodsDetail/GoodsDetail';
 // order
 import Transfer from '@/views/orders/subComponent/Transfer';
 
-// 测试组件
-import test from '../test/test';
+
+// component
+import Personal from '@/components/Personal';
+
 
 
 Vue.use(VueRouter)
@@ -33,7 +35,8 @@ const routes = [
   { path: '/cart', component: Cart, meta: { KeepAlive: true }},
   { path: '/mine',  component: Mine },
   { path: '/goodsdetail', component: GoodsDetail },
-  { path: '/transfer/', component: Transfer },
+  { path: '/transfer', component: Transfer },
+  { path: '/personal', component: Personal },
 ]
 
 const router = new VueRouter({
