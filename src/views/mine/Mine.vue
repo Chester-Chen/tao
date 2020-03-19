@@ -3,7 +3,7 @@
     <top-bar :navbarTitle="navbarTitle"></top-bar>
 
     <!-- 个人信息 -->
-    <router-link to="/personal" tag="div">
+    <router-link to="/login" tag="div">
       <div class="personal-ifo">
         <div class="avator">
           <van-image round width="3rem" height="3rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />

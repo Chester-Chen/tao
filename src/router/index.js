@@ -19,7 +19,8 @@ import Transfer from '@/views/orders/subComponent/Transfer';
 // component
 import Personal from '@/components/Personal';
 
-
+// login && register
+import Login from '@/views/login/login';
 
 Vue.use(VueRouter)
 
@@ -37,6 +38,7 @@ const routes = [
   { path: '/goodsdetail', component: GoodsDetail },
   { path: '/transfer', component: Transfer },
   { path: '/personal', component: Personal },
+  { path: '/login', component: Login },
 ]
 
 const router = new VueRouter({

@@ -28,7 +28,9 @@ import {
   Button,
   Image,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  Form,
+  Field 
 } from 'vant';
 
 // 全局组件注册
@@ -42,7 +44,10 @@ Vue.use(Tabbar)
   .use(Toast)
   .use(Button)
   .use(Image)
-  .use(Checkbox).use(CheckboxGroup);
+  .use(Checkbox)
+  .use(CheckboxGroup)
+  .use(Form)
+  .use(Field);
 
 Vue.config.productionTip = false
 
