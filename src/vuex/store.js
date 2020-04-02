@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 
 Vue.use(Vuex);
 
@@ -106,8 +107,13 @@ const store = new Vuex.Store({
 
             }
 
-            console.log(orderLists)
+            console.log('orderLists', orderLists)
             state.orderLists = orderLists;
+
+            axios.post('commitorders',{orders}).then(res => {
+                console.log('orders:', orders);
+                console.log(res.data.msg);
+            })
 
         }
 

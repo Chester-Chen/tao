@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <top-bar :navbarTitle="navbarTitle" :isShow="isShow"></top-bar>
+    <top-bar :navbarTitle="navbarTitle"></top-bar>
 
     <van-form @submit="onSubmit">
       <van-field
@@ -19,7 +19,7 @@
         :rules="[{ required: true, message: '请填写密码' }]"
       />
       <div style="margin: 16px;">
-        <van-button round block type="info" native-type="submit">提交</van-button>
+        <van-button round block type="info" native-type="submit">登录</van-button>
       </div>
     </van-form>
   </div>
@@ -27,34 +27,34 @@
 
 <script type="text/javascript">
 import TopBar from "@/components/TopBar";
-import { Toast } from 'vant';
+import { Toast } from "vant";
 
 export default {
   data() {
     return {
       username: "",
       password: "",
-      isShow: true,
       navbarTitle: "登录"
     };
   },
   methods: {
     onSubmit(values) {
-    //   console.log("submit", values);
+      //   console.log("submit", values);
       this.$axios
         .post("login", {
           values
         })
         .then(response => {
-            console.log(response.data);
+          console.log(response.data);
 
-            if(response.data.status == 200) {
-                Toast(response.data.msg);
-            } else if(response.data.status == 404) {
-                Toast(response.data.msg);
-            } else if(response.data.status == 403) {
-                Toast(response.data.msg);
-            }
+          if (response.data.status == 200) {
+            Toast(response.data.msg);
+            this.$router.push("home");
+          } else if (response.data.status == 404) {
+            Toast(response.data.msg);
+          } else if (response.data.status == 403) {
+            Toast(response.data.msg);
+          }
         });
     }
   },

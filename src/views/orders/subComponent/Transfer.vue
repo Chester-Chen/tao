@@ -1,8 +1,8 @@
 <template>
-  <div class="transfer">
+  <div id="transfer">
     <top-bar :navbarTitle="navbarTitle" :isShow="isShow"></top-bar>
     <div>快递id：{{transferId}}</div>
-    <div class="step" v-for="(item, index) in transferData.result.list" :key="index">
+    <!-- <div class="step" v-for="(item, index) in transferData.result.list" :key="index">
       <div class="step-status">
         <div class="step-line"></div>
         <div class="step-index">{{index + 1}}</div>
@@ -11,12 +11,29 @@
           <div class="step-content">{{item.remark}}</div>
         </div>
       </div>
-    </div>
+    </div>-->
+
+    <van-steps
+      direction="vertical"
+      :active="activeStatus"
+      v-for="(item, index) in transferData.result.list"
+      :key="index"
+    >
+      <van-step  id="item-step">
+        <h3>{{item.remark}}</h3>
+        <p>{{item.datetime}}</p>
+      </van-step>
+    </van-steps>
   </div>
 </template>
 
 <script type="text/javascript">
+import Vue from "vue";
 import TopBar from "@/components/TopBar";
+import { Step, Steps } from "vant";
+
+
+Vue.use(Step).use(Steps);
 
 export default {
   data() {
@@ -24,6 +41,7 @@ export default {
       isShow: true,
       navbarTitle: "物流",
       transferId: null,
+      activeStatus: this.getActiveStatus,
       transferData: {
         resultcode: "200" /* 老版状态码，新用户请忽略此字段 */,
         reason: "查询物流信息成功",
@@ -88,16 +106,25 @@ export default {
     this.transferId = id;
     console.log("快递id：" + id);
   },
-  methods: {}
+  methods: {},
+  computed: {
+    getActiveStatus() {
+      return this.transferData.result.list.length - 1;
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.transfer {
+#transfer {
   padding: 0 10px;
   text-align: left;
+  /**穿透处理scss */
+ ::v-deep .van-step:last-child .van-step__line {
+    width: 1px;
+}
 
-  .step {
+  /*   .step {
     font-size: 14px;
     color: #999;
     .step-status {
@@ -142,6 +169,6 @@ export default {
         }
       }
     }
-  }
+  } */
 }
 </style>

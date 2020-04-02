@@ -28,6 +28,7 @@ import FooterTarBar from "@/components/FooterTarBar";
 import CartList from "../cart/childComponents/CartList";
 import { SubmitBar, Toast } from "vant";
 import { mapGetters, mapMutations } from "vuex";
+import wx from "weixin-js-sdk";
 
 Vue.use(SubmitBar);
 
@@ -43,9 +44,55 @@ export default {
   },
   components: { TopBar, CartList, FooterTarBar },
   created() {},
+/*   mounted() {
+    console.log(wx);
+    this.$axios({
+      methods: "get",
+      url: "/wxpay"
+    }).then(res => {
+      let timestamp = new Date().getTime();
+      wx.config({
+        debug: true, // 开启调试模式,
+        appId: res.data.appId, // 必填，企业号的唯一标识，此处填写企业号corpid
+        timestamp: timestamp, // 必填，生成签名的时间戳
+        nonceStr: res.data.nonce_str, // 必填，生成签名的随机串
+        signature: res.data.sign, // 必填，签名，见附录1
+        jsApiList: ["chooseWXPay"]
+      });
+  console.log(res);
+      wx.chooseWXPay({
+        appId: res.data.appId, // 必填，企业号的唯一标识，此处填写企业号corpid
+        timestamp: timestamp, // 必填，生成签名的时间戳
+        nonceStr: res.data.nonce_str, // 必填，生成签名的随机串
+        signType: "MD5",
+        package: res.data.prepay_id,
+        paySign: res.data.sign,
+        success: function(res) {
+          console.log(res);
+          _self.mui.toast("支付成功");
+          _self.$router.push({ path: "/userdingdan" });
+        },
+        complete: function(res) {
+          console.log(res);
+          alert("无论成功或失败都会执行");
+          //接口调用完成时执行的回调函数，无论成功或失败都会执行。
+        },
+        cancel: function(res) {
+          console.log(res);
+          _self.mui.toast("已取消支付");
+        },
+        fail: function(res) {
+          console.log(res);
+          _self.mui.toast("购买失败，请重新创建订单");
+        }
+      });
+
+
+    });
+  }, */
   methods: {
-    ...mapMutations(['commitOrders']),
-  
+    ...mapMutations(["commitOrders"]),
+
     // 选中全部及取消全部
     selectAll() {
       this.goodLists = this.getGoodLists;
@@ -119,7 +166,7 @@ export default {
       let orders = this.allOrderLists.filter(item => {
         return item.selected == true;
       });
-      console.log('提交的orders: '+ JSON.stringify(orders));
+      console.log("提交的orders: ", orders);
       return orders;
     }
   }

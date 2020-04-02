@@ -21,24 +21,25 @@ import Personal from '@/components/Personal';
 
 // login && register
 import Login from '@/views/login/login';
+import Register from '@/views/register/register';
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/home' },
+  { path: '/', redirect: '/login' },
   { path: '/home', component: Home},
   { path: '/home/foods', component: Foods} ,
   { path: '/home/movie', component: Movie },
   { path: '/home/travel', component: Travel },
   { path: '/home/leisure', component: Leisure },
   { path: '/orders', name: 'orders', component: Orders },
-  // { path: '/cart', name: 'cart', component: Cart},
   { path: '/cart', component: Cart, meta: { KeepAlive: true }},
   { path: '/mine',  component: Mine },
   { path: '/goodsdetail', component: GoodsDetail },
   { path: '/transfer', component: Transfer },
   { path: '/personal', component: Personal },
   { path: '/login', component: Login },
+  { path: '/register', component: Register },
 ]
 
 const router = new VueRouter({

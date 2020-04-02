@@ -73,6 +73,15 @@
       </div>
     </router-link>
 
+    <router-link to="/register" tag="div">
+      <div class="personal-ifo">
+        <div class="ifo">注册账户</div>
+        <div class="arrow">
+          <van-icon name="arrow" />
+        </div>
+      </div>
+    </router-link>
+
     <!-- 底部导航 -->
     <footer-tar-bar :active="active"></footer-tar-bar>
   </div>
