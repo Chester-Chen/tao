@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import { clearCookie } from '@/utils/tokenUtils';
 
 Vue.use(Vuex);
 
@@ -169,6 +170,7 @@ window.onbeforeunload = function () {
     // 刷新页面或关闭页面时，存到本地
     window.localStorage.setItem('cartList', JSON.stringify(store.getters.getGoodLists));
     window.localStorage.setItem('orderLists', JSON.stringify(store.getters.getOrderLists));
+    // clearCookie('token');
 }
 
 export default store;

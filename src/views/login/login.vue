@@ -27,6 +27,7 @@
 
 <script type="text/javascript">
 import TopBar from "@/components/TopBar";
+import { getCookie, setCookie, clearCookie } from "@/utils/tokenUtils";
 import { Toast } from "vant";
 
 export default {
@@ -39,7 +40,6 @@ export default {
   },
   methods: {
     onSubmit(values) {
-      //   console.log("submit", values);
       this.$axios
         .post("login", {
           values
@@ -48,6 +48,11 @@ export default {
           console.log(response.data);
 
           if (response.data.status == 200) {
+            sessionStorage.setItem("userName", this.username);
+            document.cookie =
+              encodeURIComponent("token") +
+              "=" +
+              encodeURIComponent(response.data.token);
             Toast(response.data.msg);
             this.$router.push("home");
           } else if (response.data.status == 404) {

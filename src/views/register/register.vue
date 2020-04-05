@@ -52,23 +52,24 @@ export default {
   },
   methods: {
     onSubmit(values) {
-        this.$axios
-          .post("register", {
-            values
-          })
-          .then(response => {
-              console.log(response.data);
-              if(response.data.status == 200) {
-                  Toast(response.data.msg);
-                  this.$router.push('home');
-              } else if(response.data.status == 403) {
-                  Toast(response.data.msg);
-              }
-          });
-        console.log('submit', values);
+      this.$axios
+        .post("register", {
+          values
+        })
+        .then(response => {
+          console.log(response.data);
+          if (response.data.status == 200) {
+            sessionStorage.setItem("userName", this.username);
+            Toast(response.data.msg);
+            this.$router.push("home");
+          } else if (response.data.status == 403) {
+            Toast(response.data.msg);
+          }
+        });
+      console.log("submit", values);
     },
     validator(val) {
-        return val == this.password ? true : false;
+      return val == this.password ? true : false;
     }
   },
   components: {

@@ -9,7 +9,7 @@
           <van-image round width="3rem" height="3rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
         </div>
         <div class="ifo">
-          <div class="name">CrazyBro丶</div>
+          <div class="name">{{ userName }}</div>
         </div>
         <div class="arrow">
           <van-icon name="arrow" />
@@ -84,22 +84,41 @@
 
     <!-- 底部导航 -->
     <footer-tar-bar :active="active"></footer-tar-bar>
+
+    <button @click="tokenVertify">test</button>
   </div>
 </template>
 
 <script type="text/javascript">
 import TopBar from "@/components/TopBar";
 import FooterTarBar from "@/components/FooterTarBar";
+import { getToken, getCookie } from "@/utils/tokenUtils";
 
 export default {
   data() {
     return {
       navbarTitle: "我的Tao",
-      active: 3
+      active: 3,
+      userName: ""
     };
   },
   components: { TopBar, FooterTarBar },
-  methods: {}
+  mounted() {
+    this.userName = sessionStorage.getItem("userName");
+  },
+  methods: {
+    tokenVertify() {
+      let token = getCookie("token");
+      console.log('mine:', token);
+      this.$axios
+        .post("test", {
+          token
+        })
+        .then(response => {
+          console.log(response.data);
+        });
+    }
+  }
 };
 </script>
 
@@ -137,8 +156,12 @@ export default {
       display: inline-block;
     }
     .ifo {
-      display: inline-block;
+      display: flex;
+      margin-left: 1rem;
+      justify-content: center;
+      align-items: center;
       .name {
+        color: orange;
         font-size: 1.2rem;
         font-weight: 400;
       }
