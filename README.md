@@ -4,9 +4,16 @@
 
 # 用到的技术栈
 
-- vue + vue-router + vuex
-- axios
-- babel + sass
+- vue + vue-cli + vant + vue-router + vuex + axios
+
+# 项目截图
+![](https://s1.ax1x.com/2020/04/15/JC5Plq.png)
+![](https://s1.ax1x.com/2020/04/15/JC5i60.png)
+![](https://s1.ax1x.com/2020/04/15/JC5pfs.png)
+![](https://s1.ax1x.com/2020/04/15/JC5SYj.png)
+![](https://s1.ax1x.com/2020/04/15/JC4zkQ.png)
+![](https://s1.ax1x.com/2020/04/15/JC4vTg.png)
+![](https://s1.ax1x.com/2020/04/15/JC4Xm8.png)
 
 ## [配套的后台管理系统](https://github.com/Chester-Chen/tao-admin)
 
