@@ -61,7 +61,6 @@
 
     <!-- 分割线 -->
     <div class="divider" style="height: 5px;background: #f5f5f5;"></div>
-    <!-- footer -->
 
     <!-- 参数选择 -->
     <div class="size-selected comment">
@@ -73,25 +72,48 @@
     </div>
 
     <!-- comment -->
-    <div class="comment">
-      <div class="avator">
-        <van-image round width="1.2rem" height="1.2rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-        <div class="wrapper">
-          <div class="name">疯狂的小弟弟</div>
-          <van-rate size="18" v-model="rateValue" />
+    <div class="comment-list" v-for="(item, index) in comment_lists" :key="index">
+      <div class="comment">
+        <div class="avator">
+          <van-image round width="1.2rem" height="1.2rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+          <div class="wrapper">
+            <div class="name">{{item.name}}</div>
+            <van-rate size="18" v-model="rateValue" />
+          </div>
         </div>
-      </div>
-      <div class="content">很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致</div>
-      <div class="icon">
-        <a href="javascript: void(0);">
-          <van-icon name="good-job-o" />
-        </a>
-        <a href="javascript: void(0);">
-          <van-icon name="comment-o" />
-        </a>
+        <div class="content">{{item.content}}</div>
+        <div class="icon">
+          <a href="javascript: void(0);">
+            <van-icon name="good-job-o" />
+          </a>
+          <a href="javascript: void(0);">
+            <van-icon name="comment-o" />
+          </a>
+        </div>
       </div>
     </div>
 
+    <!-- 参数选择 -->
+    <div class="divider" style="height: 5px;background: #f5f5f5;"></div>
+
+    <!-- 用户评价输入 -->
+    <div class="user_input">
+      <van-field
+        v-model="message"
+        rows="2"
+        autosize
+        label="评论"
+        type="textarea"
+        maxlength="100"
+        placeholder="请输入留言"
+        show-word-limit
+        label-width="50"
+      />
+      <van-button type="danger" size="mini" @click="commentPost">提交</van-button>
+    </div>
+
+    <!-- 参数选择 -->
+    <div class="divider" style="height: 5px;background: #f5f5f5;"></div>
     <!-- sku -->
     <van-sku
       v-model="skuShow"
@@ -138,6 +160,29 @@ export default {
       navbarTitle: "商品详情",
       isShow: true,
       rateValue: 3,
+      message: "",
+      comment_lists: [
+        {
+          name: "CrazyBro",
+          content:
+            "很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致"
+        },
+        {
+          name: "小王",
+          content:
+            "很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致"
+        },
+        {
+          name: "小李",
+          content:
+            "很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致"
+        },
+        {
+          name: "老马",
+          content:
+            "很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致很中国很复古，一眼相中，手感细腻，特别是背面的细节做的非常精致"
+        }
+      ],
       goodsDetail: {
         // 根据传入的商品id进行接口数据对比，筛选相应数据渲染
         id: 1001,
@@ -230,7 +275,14 @@ export default {
   components: { TopBar },
   methods: {
     onClickIcon() {},
-    onClickButton() {}
+    onClickButton() {},
+    commentPost() {
+      let object = new Object();
+      let name = sessionStorage.getItem('userName');  // 获取当前用户名
+      object.name = name;
+      object.content = this.message;
+      this.comment_lists.unshift(object);
+    }
   }
 };
 </script>
@@ -368,6 +420,13 @@ export default {
         color: #999;
       }
       text-align: right;
+    }
+  }
+  .user_input {
+    overflow: auto;
+    .van-button--mini {
+      float: right;
+      margin-right: 1rem;
     }
   }
 }
