@@ -2,7 +2,11 @@
   <div id="cart">
     <!-- topbar -->
     <top-bar :navbarTitle="navbarTitle"></top-bar>
-
+    <van-overlay :show="show" @click="overlay">
+      <div class="wrapper" @click.stop>
+        <div id="qrcode" ref="qr"></div>
+      </div>
+    </van-overlay>
     <!-- 购物车列表 -->
     <cart-list @isCancelAllSelected="isCancelAllSelected"></cart-list>
 
@@ -11,13 +15,15 @@
       :price="totalPrice"
       button-text="提交订单"
       :decimal-length="2"
-      @submit="commitOrders(orderLists)"
+      @submit="commitOrdersHandler(orderLists)"
     >
       <van-checkbox v-model="check" @click="selectAll">全选</van-checkbox>
     </van-submit-bar>
 
     <!-- 底部导航 -->
     <footer-tar-bar :active="active"></footer-tar-bar>
+
+    <!-- qr -->
   </div>
 </template>
 
@@ -26,10 +32,11 @@ import Vue from "vue";
 import TopBar from "@/components/TopBar";
 import FooterTarBar from "@/components/FooterTarBar";
 import CartList from "../cart/childComponents/CartList";
-import { SubmitBar, Toast } from "vant";
+import { SubmitBar, Toast, Overlay } from "vant";
 import { mapGetters, mapMutations } from "vuex";
+import qr from "qrcodejs2";
 
-Vue.use(SubmitBar);
+Vue.use(SubmitBar).use(Overlay);
 
 export default {
   data() {
@@ -38,7 +45,8 @@ export default {
       check: this.$store.state.allChecked,
       goodLists: [],
       active: 2,
-      allOrderLists: []
+      allOrderLists: [],
+      show: false
     };
   },
   components: { TopBar, CartList, FooterTarBar },
@@ -107,6 +115,38 @@ export default {
 
         this.check = selectedStatus;
       }
+    },
+    // qrcode generation
+    qrcode() {
+      this.show = !this.show;
+      let qrcode = new qr("qrcode", {
+        text: "wxp://f2f1-kPe7Qbp-JnHQAhWyiKTU9ce9bE9ELcr",
+        width: 128,
+        height: 128,
+        colorDark: "#000000",
+        colorLight: "#ffffff"
+      });
+    },
+    // 遮罩
+    overlay() {
+      this.show = !this.show;
+      /** 法一 删除dom节点 */
+      let childNode = this.$refs.qr.children;
+      for (let i = 0, len = childNode.length; i < len; i++) {
+        this.$refs.qr.removeChild(childNode[0]);
+      }
+
+      /** 法二 设置子节点display */
+
+      /*     let childNode = this.$refs.qr.children;
+      for(let i = 0; i < childNode.length; i++) {
+        this.$refs.qr.children[i].style.display = 'none'
+      } */
+    },
+    // 提交订单
+    commitOrdersHandler(orderLists) {
+      this.qrcode();
+      this.commitOrders(orderLists);
     }
   },
   watch: {},
@@ -131,6 +171,14 @@ export default {
   padding: 0 8px;
   .van-submit-bar {
     margin-bottom: 50px;
+  }
+  .van-overlay {
+    z-index: 999;
+  }
+  .van-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
