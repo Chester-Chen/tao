@@ -35,7 +35,7 @@
     <!-- ad -->
     <img
       class="ad"
-      src="//gw.alicdn.com/tfs/TB1jG0De1bviK0jSZFNXXaApXXa-750-386.png_790x10000.jpg_.webp"
+      src="https://s1.ax1x.com/2020/05/15/YrcPsg.jpg"
       alt="ad-placeholder"
       srcset
     />
@@ -50,7 +50,7 @@
             <!-- lef -->
             <div class="item-left">
               <img
-                src="//gw.alicdn.com/tps/i3/2200757237600/O1CN01dyAlSd260qfCm0Ip0_!!2-item_pic.png_170x10000.jpg_.webp"
+                src="https://s1.ax1x.com/2020/05/15/YrW3jK.png"
                 @click="tip"
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
@@ -58,7 +58,7 @@
             <!-- right -->
             <div class="item-right">
               <img
-                src="//gw.alicdn.com/tps/i3/2200757237600/O1CN01dyAlSd260qfCm0Ip0_!!2-item_pic.png_170x10000.jpg_.webp"
+                src="https://s1.ax1x.com/2020/05/15/YrW1c6.png"
                 alt
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
@@ -73,7 +73,7 @@
             <!-- lef -->
             <div class="item-left">
               <img
-                src="//gw.alicdn.com/tps/bao/upload/TB1ZD26aL5G3KVjSZPxXXbI3XXa.png_170x10000.jpg_.webp"
+                src="https://s1.ax1x.com/2020/05/15/YrW1c6.png"
                 alt
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
@@ -81,7 +81,7 @@
             <!-- right -->
             <div class="item-right">
               <img
-                src="//gw.alicdn.com/bao/upload/TB1bh_bj4z1gK0jSZSgXXavwpXa.png_170x10000.jpg_.webp"
+                src="https://s1.ax1x.com/2020/05/15/YrW3jK.png"
                 alt
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
@@ -96,7 +96,7 @@
             <!-- lef -->
             <div class="item-left">
               <img
-                src="//gw.alicdn.com/tps/bao/upload/TB1ZD26aL5G3KVjSZPxXXbI3XXa.png_170x10000.jpg_.webp"
+                src="https://s1.ax1x.com/2020/05/15/YrWl1x.png"
                 alt
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
@@ -104,7 +104,7 @@
             <!-- right -->
             <div class="item-right">
               <img
-                src="//gw.alicdn.com/bao/upload/TB1bh_bj4z1gK0jSZSgXXavwpXa.png_170x10000.jpg_.webp"
+                src="https://s1.ax1x.com/2020/05/15/YrWQ91.png"
                 alt
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
@@ -119,7 +119,7 @@
             <!-- lef -->
             <div class="item-left">
               <img
-                src="//gw.alicdn.com/tps/bao/upload/TB1ZD26aL5G3KVjSZPxXXbI3XXa.png_170x10000.jpg_.webp"
+                src="https://s1.ax1x.com/2020/05/15/YrWQ91.png"
                 alt
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
@@ -127,7 +127,7 @@
             <!-- right -->
             <div class="item-right">
               <img
-                src="//gw.alicdn.com/bao/upload/TB1bh_bj4z1gK0jSZSgXXavwpXa.png_170x10000.jpg_.webp"
+                src="https://s1.ax1x.com/2020/05/15/YrWl1x.png"
                 alt
               />
               <van-tag mark type="warning" size="small">好货必买</van-tag>
@@ -188,32 +188,31 @@ export default {
       navbarTitle: "淘兴趣",
       active: 0,
       images: [
-        "//gw.alicdn.com/imgextra/i3/939554/O1CN01Hohccc2KRmavUmXmd_!!939554-0-lubanu.jpg_790x10000Q75.jpg_.webp",
-        "//gw.alicdn.com/imgextra/i3/939554/O1CN01Hohccc2KRmavUmXmd_!!939554-0-lubanu.jpg_790x10000Q75.jpg_.webp",
-        "//gw.alicdn.com/imgextra/i3/939554/O1CN01Hohccc2KRmavUmXmd_!!939554-0-lubanu.jpg_790x10000Q75.jpg_.webp"
+        "https://s1.ax1x.com/2020/05/15/YDb1AK.jpg",
+        "https://s1.ax1x.com/2020/05/15/YDbQ76.jpg",
       ],
       gridImages: [
         {
           url:
-            "//gw.alicdn.com/tfs/TB1ISdWSFXXXXbFXXXXXXXXXXXX-146-147.png_110x10000.jpg_.webp",
+            "https://s1.ax1x.com/2020/05/15/YDqFKA.png",
           text: "美食",
           to: "/home/foods"
         },
         {
           url:
-            "//gw.alicdn.com/tfs/TB1wSoFa5qAXuNjy1XdXXaYcVXa-196-196.png?avatar=1_110x10000.jpg_.webp",
+            "https://s1.ax1x.com/2020/05/15/YDqPvd.png",
           text: "电影",
           to: "/home/movie"
         },
         {
           url:
-            "//gw.alicdn.com/tfs/TB15lhOSFXXXXaKXpXXXXXXXXXX-147-147.png_110x10000.jpg_.webp",
+            "https://s1.ax1x.com/2020/05/15/YDqCgH.png",
           text: "旅游",
           to: "/home/travel"
         },
         {
           url:
-            "//gw.alicdn.com/tfs/TB12CFXSFXXXXcpapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp",
+            "https://s1.ax1x.com/2020/05/15/YDq98e.png",
           text: "休闲",
           to: "/home/leisure"
         }

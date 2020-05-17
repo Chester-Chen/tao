@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <!--infinite-loading组件要放在列表的底部，滚动的盒子里面！-->
+    <!-- infinite-loading 要放在列表的底部，滚动的盒子里面 -->
     <infinite-loading @infinite="infiniteHandler"></infinite-loading>
   </div>
 </template>
@@ -43,13 +43,13 @@ export default {
           name: "衣服",
           price: 210,
           src:
-            "//gw.alicdn.com/tps/i4/2091054905/O1CN014Vz5AB1m6XGHYyQaz_!!2-item_pic.png_170x10000.jpg_.webp"
+            "https://s1.ax1x.com/2020/05/15/YrW2Nj.jpg"
         },
         {
           name: "鞋子",
           price: 404,
           src:
-            "//gw.alicdn.com/tps/i3/2200757237600/O1CN01dyAlSd260qfCm0Ip0_!!2-item_pic.png_170x10000.jpg_.webp"
+            "https://s1.ax1x.com/2020/05/15/YrWgEQ.jpg"
         }
       ];
       // 获取商品信息
@@ -58,6 +58,7 @@ export default {
         for (let i = this.lists.length + 1; i <= this.lists.length + 10; i++) {
           // temp.push(i);
           temp.push(data);
+          // console.log(temp);
         }
         // 合并数组
         this.lists = this.lists.concat(temp);

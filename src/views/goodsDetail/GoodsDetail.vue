@@ -188,8 +188,8 @@ export default {
         id: 1001,
         swipeImages: {
           url: [
-            "//img.alicdn.com/imgextra/i1/36102699/TB2vFKGigLD8KJjSszeXXaGRpXa_!!36102699.jpg_640x640q80_.webp",
-            "//img.alicdn.com/imgextra/i4/36102699/TB2VRCiih6I8KJjSszfXXaZVXXa_!!36102699.jpg_640x640q80_.webp"
+            "https://s1.ax1x.com/2020/05/15/YrfWZD.png",
+            "https://s1.ax1x.com/2020/05/15/Yrf2qO.png"
           ]
         },
         goodsPrice: {
@@ -222,14 +222,14 @@ export default {
               {
                 id: "30349", // skuValueId：规格值 id
                 name: "红色", // skuValueName：规格值名称
-                imgUrl: "https://img.yzcdn.cn/1.jpg", // 规格类目图片，只有第一个规格类目可以定义图片
-                previewImgUrl: "https://img.yzcdn.cn/1p.jpg" // 用于预览显示的规格类目图片
+                imgUrl: "https://img.yzcdn.cn/2.jpg", // 规格类目图片，只有第一个规格类目可以定义图片
+                previewImgUrl: "https://img.yzcdn.cn/2.jpg" // 用于预览显示的规格类目图片
               },
               {
                 id: "1215",
                 name: "蓝色",
                 imgUrl: "https://img.yzcdn.cn/2.jpg",
-                previewImgUrl: "https://img.yzcdn.cn/2p.jpg"
+                previewImgUrl: "https://img.yzcdn.cn/2.jpg"
               }
             ],
             k_s: "s1" // skuKeyStr：sku 组合列表（下方 list）中当前类目对应的 key 值，value 值会是从属于当前类目的一个规格值 id
@@ -265,7 +265,7 @@ export default {
       },
       skuGoods: {
         // 默认商品 sku 缩略图
-        picture: "https://img.yzcdn.cn/1.jpg"
+        picture: "https://img.yzcdn.cn/2.jpg"
       }
     };
   },
@@ -282,6 +282,7 @@ export default {
       object.name = name;
       object.content = this.message;
       this.comment_lists.unshift(object);
+      this.message = '';
     }
   }
 };

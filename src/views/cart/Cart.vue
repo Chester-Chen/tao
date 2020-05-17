@@ -17,7 +17,7 @@
       :decimal-length="2"
       @submit="commitOrdersHandler(orderLists)"
     >
-      <van-checkbox v-model="check" @click="selectAll">全选</van-checkbox>
+    <van-checkbox v-model="check" @click="selectAll">全选</van-checkbox>
     </van-submit-bar>
 
     <!-- 底部导航 -->
@@ -156,8 +156,12 @@ export default {
   computed: {
     ...mapGetters(["totalPrice", "goodsIsAllSelected", "getGoodLists"]),
     orderLists() {
+      let accepter = sessionStorage.getItem('userName');
       let orders = this.allOrderLists.filter(item => {
-        return item.selected == true;
+        if(item.selected == true) {
+          item.accepter = accepter;
+          return true;
+        }
       });
       console.log("提交的orders: ", orders);
       return orders;

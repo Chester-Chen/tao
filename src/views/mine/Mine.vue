@@ -18,7 +18,7 @@
     </router-link>
 
     <div class="top">
-      <router-link to="/personal" tag="div">
+      <router-link to="" tag="div">
         <div class="personal-ifo">
           <div class="ifo">我的收货地址</div>
           <div class="arrow">
@@ -27,7 +27,7 @@
         </div>
       </router-link>
 
-      <router-link to="/personal" tag="div">
+      <router-link to="" tag="div">
         <div class="personal-ifo">
           <div class="ifo">账户与安全</div>
           <div class="arrow">
@@ -37,7 +37,7 @@
       </router-link>
     </div>
 
-    <router-link to="/personal" tag="div">
+    <router-link to="" tag="div">
       <div class="personal-ifo">
         <div class="ifo">地区设置</div>
         <div class="arrow">
@@ -46,7 +46,7 @@
       </div>
     </router-link>
 
-    <router-link to="/personal" tag="div">
+    <router-link to="" tag="div">
       <div class="personal-ifo">
         <div class="ifo">关于Tao兴趣</div>
         <div class="arrow">
@@ -55,7 +55,7 @@
       </div>
     </router-link>
 
-    <router-link to="/personal" tag="div">
+    <router-link to="" tag="div">
       <div class="personal-ifo">
         <div class="ifo">切换账户</div>
         <div class="arrow">
@@ -64,7 +64,7 @@
       </div>
     </router-link>
 
-    <router-link to="/personal" tag="div">
+    <router-link to="/login" tag="div">
       <div class="personal-ifo">
         <div class="ifo">退出登录</div>
         <div class="arrow">
@@ -81,11 +81,12 @@
         </div>
       </div>
     </router-link>
-
+    <van-divider></van-divider>
     <!-- 底部导航 -->
     <footer-tar-bar :active="active"></footer-tar-bar>
 
-    <button @click="tokenVertify">test</button>
+    <!-- 测试 token时效 -->
+    <!-- <button @click="tokenVertify">test</button>  -->
   </div>
 </template>
 

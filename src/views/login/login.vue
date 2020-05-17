@@ -21,6 +21,9 @@
       <div style="margin: 16px;">
         <van-button round block type="info" native-type="submit">登录</van-button>
       </div>
+      <div style="margin: 16px;">
+        <van-button round block type="info" to="/register">注册</van-button>
+      </div>
     </van-form>
   </div>
 </template>
@@ -54,12 +57,15 @@ export default {
               "=" +
               encodeURIComponent(response.data.token);
             Toast(response.data.msg);
-            this.$router.push("home");
+            this.$router.push("/home");
           } else if (response.data.status == 404) {
             Toast(response.data.msg);
           } else if (response.data.status == 403) {
             Toast(response.data.msg);
           }
+        })
+        .catch(reason => {
+          console.log('when login occured error: ',resason);
         });
     }
   },
