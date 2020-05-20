@@ -2,6 +2,9 @@
 
 基于 vant 的移动端商城
 
+# APP体验
+![](https://s1.ax1x.com/2020/05/20/Y7Qf0g.png)
+
 # 用到的技术栈
 
 - vue + vue-cli + vant + vue-router + vuex + axios
